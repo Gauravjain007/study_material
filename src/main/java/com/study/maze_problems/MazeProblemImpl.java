@@ -1,7 +1,5 @@
 package com.study.maze_problems;
 
-import java.util.Arrays;
-
 /**
  * Solving Multiple Maze Problems
  */
