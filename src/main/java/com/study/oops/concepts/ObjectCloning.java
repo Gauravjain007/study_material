@@ -13,10 +13,10 @@ class Human implements Cloneable {
         this.array = array;
     }
 
-    @Override
     /**
      * Creates a Shallow Copy of the Object
      */
+    @Override
     protected Object clone() throws CloneNotSupportedException {
         return super.clone();
     }
