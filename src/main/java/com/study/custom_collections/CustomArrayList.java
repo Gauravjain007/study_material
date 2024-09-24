@@ -1,7 +1,10 @@
-package com.study.oops.concepts;
+package com.study.custom_collections;
 
 import java.util.Arrays;
 
+/**
+ * Implements Custom Arraylist of the Collections Framework
+ */
 public class CustomArrayList<T> {
     private static final int DEFAULT_SIZE = 10;
     private int size = 0;
