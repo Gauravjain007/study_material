@@ -3,9 +3,9 @@ package com.study.custom_collections;
 import java.util.NoSuchElementException;
 
 /**
- * Implements Custom Singly Linkedlist of the Collections Framework
+ * Implements Custom Doubly Linkedlist of the Collections Framework
  */
-public class CustomSinglyLinkedList<T> {
+public class CustomDoublyLinkedList<T> {
 
     private Node head;
     private Node tail;
@@ -17,26 +17,28 @@ public class CustomSinglyLinkedList<T> {
     class Node {
         private T value;
         private Node next;
+        private Node prev;
 
         public Node(T value) {
             this.value = value;
         }
 
-        public Node(T value, Node next) {
+        public Node(T value, Node next, Node prev) {
             this.value = value;
             this.next = next;
+            this.prev = prev;
         }
 
         @Override
         public String toString() {
-            return "Node [" + value + ", " + next + "]";
+            return "Node [" + value + "]";
         }
     }
 
     /**
      * Constructor to initialize the LinkedList
      */
-    public CustomSinglyLinkedList() {
+    public CustomDoublyLinkedList() {
         this.size = 0;
     }
 
@@ -46,7 +48,10 @@ public class CustomSinglyLinkedList<T> {
      * @param value
      */
     public void insertFirst(T value) {
-        Node newNode = new Node(value, this.head);
+        Node newNode = new Node(value, this.head, null);
+        if (this.size > 0) {
+            this.head.prev = newNode;
+        }
         this.head = newNode;
 
         if (this.tail == null) {
@@ -66,7 +71,7 @@ public class CustomSinglyLinkedList<T> {
             insertFirst(value);
             return;
         }
-        Node newNode = new Node(value);
+        Node newNode = new Node(value, null, this.tail);
         this.tail.next = newNode;
         this.tail = newNode;
 
@@ -92,9 +97,10 @@ public class CustomSinglyLinkedList<T> {
                 insertLast(value);
                 return;
             }
-            Node temp = get(index - 1);
-            Node newNode = new Node(value, temp.next);
-            temp.next = newNode;
+            Node temp = get(index);
+            Node newNode = new Node(value, temp, temp.prev);
+            temp.prev.next = newNode;
+            temp.prev = newNode;
 
             this.size++;
         }
@@ -114,12 +120,13 @@ public class CustomSinglyLinkedList<T> {
 
         T value = this.head.value;
         this.head = this.head.next;
+        this.head.prev = null;
 
         if (this.head == null) {
             this.tail = null;
         }
 
-        size--;
+        this.size--;
 
         return value;
     }
@@ -139,12 +146,12 @@ public class CustomSinglyLinkedList<T> {
             return deleteFirst();
         }
 
-        T value = tail.value;
+        T value = this.tail.value;
 
-        Node newTail = get(this.size - 2);
-        newTail.next = null;
-        tail = newTail;
-        size--;
+        this.tail.prev.next = null;
+        this.tail = this.tail.prev;
+
+        this.size--;
 
         return value;
     }
@@ -171,10 +178,11 @@ public class CustomSinglyLinkedList<T> {
             return deleteLast();
         }
 
-        Node prevNode = get(index - 1);
-        T value = prevNode.next.value;
-        prevNode.next = prevNode.next.next;
-        size--;
+        Node deleteNode = get(index);
+        T value = deleteNode.value;
+        deleteNode.prev.next = deleteNode.next;
+        deleteNode.next.prev = deleteNode.prev;
+        this.size--;
 
         return value;
     }
@@ -250,24 +258,38 @@ public class CustomSinglyLinkedList<T> {
         Node temp = this.head;
         System.out.print("[ ");
         while (temp != null) {
-            System.out.print(temp.value + " -> ");
+            System.out.print(temp.value + " <-> ");
             temp = temp.next;
         }
         System.out.println("END ] - size{" + this.size + "}");
     }
 
+    /**
+     * Prints the LinkedList in a Reverse Customed Manner
+     */
+    public void displayReverse() {
+        Node temp = this.tail;
+        System.out.print("[ END");
+        while (temp != null) {
+            System.out.print(" <-> " + temp.value);
+            temp = temp.prev;
+        }
+        System.out.println("] - size{" + this.size + "}");
+    }
+
     @Override
     public String toString() {
-        return "CustomSinglyLinkedList [head=" + head + ", tail=" + tail + ", size=" + size + "]";
+        return "CustomDoublyLinkedList [head=" + head + ", tail=" + tail + ", size=" + size + "]";
     }
 
     public static void main(String[] args) {
-        CustomSinglyLinkedList<Integer> ll = new CustomSinglyLinkedList<>();
+        CustomDoublyLinkedList<Integer> ll = new CustomDoublyLinkedList<>();
         ll.insertFirst(10);
         ll.insertFirst(20);
         ll.insertLast(30);
         ll.insertAtIndex(2, 50);
         ll.display();
+        ll.displayReverse();
         System.out.println("Deleted " + ll.deleteFirst());
         ll.display();
         System.out.println("Deleted " + ll.deleteLast());
