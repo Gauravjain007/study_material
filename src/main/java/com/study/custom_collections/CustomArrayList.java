@@ -1,6 +1,7 @@
 package com.study.custom_collections;
 
 import java.util.Arrays;
+import java.util.NoSuchElementException;
 
 /**
  * Implements Custom Arraylist of the Collections Framework
@@ -35,7 +36,9 @@ public class CustomArrayList<T> {
      * 
      * @return The last element from the ArrayList
      */
-    public T remove() {
+    public T remove() throws NoSuchElementException {
+        if (isEmpty())
+            throw new NoSuchElementException();
         T removed = (T) this.arrayList[--this.size];
         this.arrayList[this.size] = null;
         return removed;
@@ -69,7 +72,7 @@ public class CustomArrayList<T> {
      * @return Boolean
      */
     private boolean checkIndex(int index) {
-        if (index < this.arrayList.length)
+        if (index < this.arrayList.length && index >= 0)
             return true;
         throw new IndexOutOfBoundsException("Array Index OutOfBound - ArrayList Size {" + this.arrayList.length + "}");
     }
