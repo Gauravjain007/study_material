@@ -1,7 +1,7 @@
 package com.study.oops.concepts;
 
 import java.util.Arrays;
-import java.util.List;
+import java.util.Objects;
 
 class Student implements Comparable<Student> {
     private String name;
@@ -38,6 +38,34 @@ class Student implements Comparable<Student> {
         return (this.marks - student.marks);
     }
 
+    /**
+     * Compares this Student object to another object for equality.
+     * 
+     * @param obj the object to compare with this Student
+     * @return true if the specified object is equal to this Student,
+     *         otherwise false
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null || getClass() != obj.getClass())
+            return false;
+        Student student = (Student) obj;
+        return marks == student.marks && Objects.equals(name, student.name);
+    }
+
+    /**
+     * Generates a hash code for this Student object.
+     * The hash code is computed based on the name and marks of the student.
+     * 
+     * @return a hash code value for this Student object
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, marks);
+    }
+
     @Override
     public String toString() {
         return "[" + name + " = " + marks + "]";
@@ -68,5 +96,19 @@ public class CompareObjectsImpl {
         // Using the comparison - Descending Order
         Arrays.sort(arr, (a, b) -> -(a.getMarks() - b.getMarks()));
         System.out.println(Arrays.toString(arr));
+
+        // Compare the objects
+        if (s1.equals(s2)) {
+            System.out.println("S1: " + s1 + " & S2: " + s2 + " are same.");
+        } else {
+            System.out.println("S1: " + s1 + " & S2: " + s2 + " are not same.");
+        }
+        Student s7 = new Student("Ryan", 67);
+        if (s1.equals(s7)) {
+            System.out.println("S1: " + s1 + " & S7: " + s7 + " are same.");
+        } else {
+            System.out.println("S1: " + s1 + " & S7: " + s7 + " are not same.");
+        }
+
     }
 }
