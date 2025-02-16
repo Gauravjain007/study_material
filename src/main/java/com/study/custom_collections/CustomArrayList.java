@@ -36,6 +36,7 @@ public class CustomArrayList<T> {
      * 
      * @return The last element from the ArrayList
      */
+    @SuppressWarnings("unchecked")
     public T remove() throws NoSuchElementException {
         if (isEmpty())
             throw new NoSuchElementException();
@@ -59,10 +60,10 @@ public class CustomArrayList<T> {
      * @param index
      * @return the element at the specified position in this list
      */
+    @SuppressWarnings("unchecked")
     public T get(int index) {
-        if (checkIndex(index))
-            return (T) this.arrayList[index];
-        return null;
+        checkIndex(index);
+        return (T) this.arrayList[index];
     }
 
     /**

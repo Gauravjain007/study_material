@@ -36,6 +36,7 @@ public class CustomStack<T> {
      * 
      * @return The Popped element
      */
+    @SuppressWarnings("unchecked")
     public T pop() throws NoSuchElementException {
         if (isEmpty())
             throw new NoSuchElementException();
@@ -49,6 +50,7 @@ public class CustomStack<T> {
      * 
      * @return The Last element of the Stack
      */
+    @SuppressWarnings("unchecked")
     public T peek() {
         if (isEmpty())
             return null;

@@ -36,6 +36,7 @@ public class CustomQueue<T> {
      * 
      * @return The Popped element
      */
+    @SuppressWarnings("unchecked")
     public T dequeue() throws NoSuchElementException {
         if (isEmpty())
             throw new NoSuchElementException();
@@ -53,6 +54,7 @@ public class CustomQueue<T> {
      * 
      * @return The Front element of the queue
      */
+    @SuppressWarnings("unchecked")
     public T peek() {
         if (isEmpty())
             return null;
