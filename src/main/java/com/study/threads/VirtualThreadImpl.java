@@ -194,17 +194,8 @@ public class VirtualThreadImpl {
      * many more concurrent requests than would be possible with platform threads.
      *
      * <p>
-     * Each request is simulated with the following steps:
-     * </p>
-     * <ul>
-     * <li>Parse request (CPU-bound) - fast</li>
-     * <li>Query database (I/O-bound) - slow</li>
-     * <li>Process business logic (CPU-bound) - medium</li>
-     * <li>Call external service (I/O-bound) - slow</li>
-     * <li>Generate response (CPU-bound) - fast</li>
-     * </ul>
-     * <p>
-     * For every 1000th request, the method logs a message to the console.
+     * Each request is simulated with certain steps and after there completion for
+     * every 1000th request, the method logs a message to the console.
      * </p>
      */
     public void simulateWebServer() {
