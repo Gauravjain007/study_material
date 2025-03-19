@@ -1,4 +1,4 @@
-package com.study.oops.designpatterns.singleton;
+package com.study.designpatterns.singleton;
 
 public class SingletonClassImpl {
 
