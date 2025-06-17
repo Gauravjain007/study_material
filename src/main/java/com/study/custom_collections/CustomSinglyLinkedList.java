@@ -14,7 +14,7 @@ public class CustomSinglyLinkedList<T> {
     /**
      * Node consists of a Value and a reference of the Next Node
      */
-    class Node {
+    public class Node {
         private T value;
         private Node next;
 
@@ -25,6 +25,14 @@ public class CustomSinglyLinkedList<T> {
         public Node(T value, Node next) {
             this.value = value;
             this.next = next;
+        }
+
+        public T getValue() {
+            return this.value;
+        }
+
+        public Node getNext() {
+            return this.next;
         }
 
         @Override
@@ -231,6 +239,33 @@ public class CustomSinglyLinkedList<T> {
             temp = temp.next;
         }
         return -1;
+    }
+
+    /**
+     * Returns the number of elements in the LinkedList.
+     * 
+     * @return the size of the LinkedList
+     */
+    public int getSize() {
+        return this.size;
+    }
+
+    /**
+     * Returns the Head of the LinkedList
+     * 
+     * @return the head of the LinkedList
+     */
+    public Node getHead() {
+        return this.head;
+    }
+
+    /**
+     * Returns the tail node of the LinkedList.
+     * 
+     * @return the tail node
+     */
+    public Node getTail() {
+        return this.tail;
     }
 
     /**
