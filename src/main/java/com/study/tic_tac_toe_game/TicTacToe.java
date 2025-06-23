@@ -54,6 +54,17 @@ public class TicTacToe {
     }
 
     /**
+     * Checks if the given coordinates are valid to be placed on the board
+     * 
+     * @param row Integer
+     * @param col Integer
+     * @return Boolean - Are Valid Coordinates or Not
+     */
+    private boolean areValidCoordiantes(int row, int col) {
+        return row >= 0 && col >= 0 && row < 3 && col < 3 && ' ' == this.board[row][col];
+    }
+
+    /**
      * Gets and validates the user input coordinates for the board to be filled
      * 
      * @param scanner Scanner
@@ -70,19 +81,19 @@ public class TicTacToe {
                     if (scanner.hasNextInt()) {
                         int col = scanner.nextInt() - 1;
                         // Validate the coordinates provided
-                        if (row >= 0 && col >= 0 && row < 3 && col < 3 && ' ' == this.board[row][col]) {
+                        if (areValidCoordiantes(row, col)) {
                             validInputs = true;
                             this.board[row][col] = this.player;
                         } else {
                             System.out.println("Invalid Coordinates! Please Enter Again.");
                         }
                     } else {
-                        System.out.println("Invalid Row! Please Enter Again.");
-                        scanner.next(); // Clear the invalid input
+                        System.out.println("Invalid Column! Please Enter Again.");
+                        scanner.nextLine(); // Clear the invalid input
                     }
                 } else {
-                    System.out.println("Invalid Column! Please Enter Again.");
-                    scanner.next(); // Clear the invalid input
+                    System.out.println("Invalid Row! Please Enter Again.");
+                    scanner.nextLine(); // Clear the invalid input
                 }
             } catch (Exception e) {
                 System.out.println("Invalid Input Error Encountered! Please Enter Again." + e);
@@ -115,15 +126,10 @@ public class TicTacToe {
             }
         }
 
-        // Check both the diagonals
-        if (this.board[0][0] == this.player && this.board[1][1] == this.player && this.board[2][2] == this.player) {
-            return true;
-        }
-        if (this.board[0][2] == this.player && this.board[1][1] == this.player && this.board[2][0] == this.player) {
-            return true;
-        }
-
-        return false;
+        // Check Diagonals
+        return this.board[1][1] == this.player
+                && ((this.board[0][0] == this.player && this.board[2][2] == this.player) ||
+                        (this.board[0][2] == this.player && this.board[2][0] == this.player));
     }
 
     /**
