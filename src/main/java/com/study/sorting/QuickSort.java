@@ -39,9 +39,6 @@ import java.util.Arrays;
  * </ul>
  */
 public class QuickSort {
-    private QuickSort() {
-        throw new IllegalStateException("Utility class");
-    }
 
     private static final String ILLEGAL_ARGUMENT_MSG = "Found Empty list! Cannot apply sorting.";
 

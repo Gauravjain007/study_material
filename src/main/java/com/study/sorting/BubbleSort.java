@@ -35,10 +35,6 @@ import java.util.List;
  */
 public class BubbleSort {
 
-    private BubbleSort() {
-        throw new IllegalStateException("Utility class");
-    }
-
     private static final String ILLEGAL_ARGUMENT_MSG = "Found Empty list! Cannot apply sorting.";
 
     /**

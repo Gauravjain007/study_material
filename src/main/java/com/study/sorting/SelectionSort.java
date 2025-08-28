@@ -32,10 +32,6 @@ import java.util.Arrays;
  */
 public class SelectionSort {
 
-    private SelectionSort() {
-        throw new IllegalStateException("Utility class");
-    }
-
     private static final String ILLEGAL_ARGUMENT_MSG = "Found Empty list! Cannot apply sorting.";
 
     /**

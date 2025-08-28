@@ -47,10 +47,6 @@ import java.util.List;
  */
 public class MergeSort {
 
-    private MergeSort() {
-        throw new IllegalStateException("Utility class");
-    }
-
     private static final String ILLEGAL_ARGUMENT_MSG = "Found Empty list! Cannot apply sorting.";
 
     /**
