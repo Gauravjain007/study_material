@@ -7,6 +7,10 @@ public class SingletonClassImpl {
 
     // Private Constructor
     private SingletonClassImpl() {
+        // Prevent reflection-based instantiation
+        if (instance != null) {
+            throw new IllegalStateException("Singleton instance already exists!");
+        }
     }
 
     /**
