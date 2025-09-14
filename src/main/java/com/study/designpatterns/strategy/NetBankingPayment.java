@@ -26,6 +26,6 @@ public class NetBankingPayment implements PaymentMethod {
 
     @Override
     public String getDetails() {
-        return "Username: " + username;
+        return "Transaction details for Net Banking: Username: " + username;
     }
 }

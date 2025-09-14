@@ -16,6 +16,7 @@ public class PaymentStrategyBuilder {
             System.out.println("Invalid amount");
             return false;
         }
+        System.out.println("Details: " + paymentMethod.getDetails());
         return paymentMethod.pay(amount);
     }
 }

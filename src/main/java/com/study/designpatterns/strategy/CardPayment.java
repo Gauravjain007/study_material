@@ -27,6 +27,6 @@ public class CardPayment implements PaymentMethod {
 
     @Override
     public String getDetails() {
-        return "Card Number: " + cardNumber;
+        return "Transaction details for Credit Card: Card Number: " + cardNumber;
     }
 }
