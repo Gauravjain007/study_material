@@ -113,7 +113,7 @@ class StockMarketPublisher implements Publisher<StockPrice> {
 
             // Generate price updates every 500ms to 1 second
             scheduler.scheduleWithFixedDelay(this::generatePriceUpdate,
-                    0, 500 + random.nextInt(500), TimeUnit.MILLISECONDS);
+                    0, 500L + random.nextInt(500), TimeUnit.MILLISECONDS);
 
             System.out.println("Stock market started!");
         }
