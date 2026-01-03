@@ -73,7 +73,7 @@ public class MaxSubarraySum {
     }
 
     public static void main(String[] args) {
-        int[] nums = { -2, 1, -3, 4, -1, 2, 1, -5, 4 };
+        int[] nums = { 3, -5, 1, 7, -4, 3, 2 };
         System.out.println("Max subarray sum: " + maxSubArraySum(nums));
         System.out.println("Max subarray elements: " + Arrays.toString(maxSubArray(nums)));
     }

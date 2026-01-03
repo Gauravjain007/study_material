@@ -44,7 +44,7 @@ public class FindRepeatingAndMissingNumber {
 
     /**
      * Finds the repeating and missing numbers in the array. Using frequency array.
-     * Complexity: O(n) time and O(1) space.
+     * Complexity: O(n) time and O(n) space.
      * 
      * @param arr The input array containing numbers from 1 to n with one number
      *            missing and one number repeating.

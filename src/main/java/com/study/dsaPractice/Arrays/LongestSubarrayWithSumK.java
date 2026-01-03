@@ -21,7 +21,7 @@ public class LongestSubarrayWithSumK {
         int n = nums.length;
         int maxLength = 0;
         int prefixSum = 0;
-        java.util.Map<Integer, Integer> prefixSumIndexMap = new java.util.HashMap<>();
+        Map<Integer, Integer> prefixSumIndexMap = new HashMap<>();
 
         for (int i = 0; i < n; i++) {
             prefixSum += nums[i];
