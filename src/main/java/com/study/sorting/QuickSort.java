@@ -59,8 +59,7 @@ public class QuickSort {
 
     /**
      * Recursively applies QuickSort to the given list in ascending order using
-     * Hoare
-     * Partition Scheme.
+     * Hoare Partition Scheme.
      * 
      * @param unorderedList the list to be sorted.
      * @param low           the starting index of the subarray to be sorted.
