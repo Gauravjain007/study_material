@@ -1,4 +1,4 @@
-package com.study.popularProblems;
+package com.study.dsaPractice.popularProblems;
 
 import com.study.custom_collections.CustomCircularLinkedList;
 
